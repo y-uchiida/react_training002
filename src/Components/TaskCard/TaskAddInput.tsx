@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import './TaskAddInput.css';
+import { v4 as uuidv4 } from 'uuid';
 
 type props = {
   inputText: string,
@@ -23,12 +24,15 @@ export const TaskAddInput = ({
       return;
     }
 
+    /* Idの重複が発生しないように、新規追加のタスクに対してUUIDを発行する */
+    const taskId = uuidv4();
+
     /* 入力された内容でTaskCardを追加する */
     setTaskList([
       ...taskList,
       {
-        id: taskList.length,
-        draggableId: `task-${taskList.length}`,
+        id: taskId,
+        draggableId: taskId,
         text: inputText
       }
     ]);

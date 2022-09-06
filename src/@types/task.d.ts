@@ -1,5 +1,5 @@
 type task = {
-	id: number,
+	id: string,
 	draggableId: string,
 	text: string
 };

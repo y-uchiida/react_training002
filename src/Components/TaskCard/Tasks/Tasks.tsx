@@ -18,7 +18,7 @@ const reorder = (taskList: task[], startIndex: number, endIndex: number) => {
 export const Tasks = ({ inputText, taskList, setTaskList }: props) => {
 
 	const handleDragEnd = (result: DropResult) => {
-		if (result.destination !== undefined) {
+		if (result.destination !== undefined && result.destination !== null) {
 			reorder(taskList, result.source.index, result.destination.index);
 		}
 	};
