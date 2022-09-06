@@ -4,16 +4,17 @@ import { TaskCardTitle } from './TaskCardTitle'
 import { TaskAddInput } from './TaskAddInput'
 import { Tasks } from './Tasks/Tasks'
 import './TaskCard.css'
+import { Draggable } from 'react-beautiful-dnd'
 
 type props = {
-	key: string,
+	index: number,
 	taskCard: taskCard,
 	taskCardsList: taskCard[],
 	setTaskCardsList: React.Dispatch<React.SetStateAction<taskCard[]>>,
 };
 
 export const TaskCard = ({
-	key,
+	index,
 	taskCard,
 	taskCardsList,
 	setTaskCardsList,
@@ -26,27 +27,31 @@ export const TaskCard = ({
 	const [taskList, setTaskList] = useState<task[]>([]);
 
 	return (
-		<div className="taskCard">
-			<div className='taskCardTitleAndTaskCardDeleteButtonArea'>
-				<TaskCardTitle />
-				<TaskCardDeleteButton
-					taskCard={taskCard}
-					taskCardsList={taskCardsList}
-					setTaskCardsList={setTaskCardsList}
-				/>
-			</div>
+		<Draggable draggableId={taskCard.id} index={index}>
+			{(provided) => (
+				<div ref={provided.innerRef} {...provided.draggableProps} className="taskCard">
+					<div {...provided.dragHandleProps} className='taskCardTitleAndTaskCardDeleteButtonArea'>
+						<TaskCardTitle />
+						<TaskCardDeleteButton
+							taskCard={taskCard}
+							taskCardsList={taskCardsList}
+							setTaskCardsList={setTaskCardsList}
+						/>
+					</div>
 
-			<TaskAddInput
-				inputText={inputText}
-				setInputText={setInputText}
-				setTaskList={setTaskList}
-				taskList={taskList}
-			/>
-			<Tasks
-				inputText={inputText}
-				taskList={taskList}
-				setTaskList={setTaskList}
-			/>
-		</div>
+					<TaskAddInput
+						inputText={inputText}
+						setInputText={setInputText}
+						setTaskList={setTaskList}
+						taskList={taskList}
+					/>
+					<Tasks
+						inputText={inputText}
+						taskList={taskList}
+						setTaskList={setTaskList}
+					/>
+				</div>
+			)}
+		</Draggable>
 	)
 }
