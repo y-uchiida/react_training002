@@ -4,6 +4,7 @@ import { TaskCardTitle } from './TaskCardTitle'
 import { TaskAddInput } from './TaskAddInput'
 import { Tasks } from './Tasks/Tasks'
 import './TaskCard.css'
+import { v4 as uuidv4 } from 'uuid';
 
 export const TaskCard = () => {
 
@@ -12,8 +13,8 @@ export const TaskCard = () => {
 
 	/* TaskCardが保持しているtaskの一覧 */
 	const [taskList, setTaskList] = useState<task[]>([
-		{ id: 0, draggableId: `task-0`, text: 'Running 30min' },
-		{ id: 1, draggableId: `task-1`, text: 'shopping' }
+		{ id: uuidv4(), draggableId: `task-0`, text: 'Running 30min' },
+		{ id: uuidv4(), draggableId: `task-1`, text: 'shopping' }
 	]);
 
 	return (

@@ -11,7 +11,7 @@ type props = {
 
 export const Task = ({ index, task, taskList, setTaskList }: props) => {
 
-	const handleDelete = (id: number) => {
+	const handleDelete = (id: string) => {
 		setTaskList(taskList.filter(task => task.id !== id));
 	};
 
