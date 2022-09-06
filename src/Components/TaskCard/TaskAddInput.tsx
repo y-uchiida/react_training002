@@ -19,6 +19,10 @@ export const TaskAddInput = ({
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (inputText === '') {
+      return;
+    }
+
     /* 入力された内容でTaskCardを追加する */
     setTaskList([
       ...taskList,
