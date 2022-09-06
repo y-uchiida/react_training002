@@ -1,0 +1,21 @@
+.addTaskCardButtonArea {
+	margin-left: 1%;
+	margin-top: 25px;
+}
+
+.addTaskCardButton {
+	padding: 10px 18px;
+	border-radius: 9999px;
+	font-size: 30px;
+	background-color: rgb(221, 194, 162);
+	color: #111;
+	box-shadow: 3px 3px 8px 1px #333;
+	border: 1px solid #333;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.addTaskCardButton:hover {
+	box-shadow: none;
+	transform: translate(3px, 3px);
+}

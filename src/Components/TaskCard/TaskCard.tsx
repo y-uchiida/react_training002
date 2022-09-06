@@ -4,23 +4,38 @@ import { TaskCardTitle } from './TaskCardTitle'
 import { TaskAddInput } from './TaskAddInput'
 import { Tasks } from './Tasks/Tasks'
 import './TaskCard.css'
-import { v4 as uuidv4 } from 'uuid';
 
-export const TaskCard = () => {
+type props = {
+	key: string,
+	taskCard: taskCard,
+	taskCardsList: taskCard[],
+	setTaskCardsList: React.Dispatch<React.SetStateAction<taskCard[]>>,
+};
+
+export const TaskCard = ({
+	key,
+	taskCard,
+	taskCardsList,
+	setTaskCardsList,
+}: props) => {
 
 	/* 追加するタスクのタイトルになる文字列。TaskAddInputに入力された値を受け取る */
 	const [inputText, setInputText] = useState('');
 
 	/* TaskCardが保持しているtaskの一覧 */
-	const [taskList, setTaskList] = useState<task[]>([
-		{ id: uuidv4(), draggableId: `task-0`, text: 'Running 30min' },
-		{ id: uuidv4(), draggableId: `task-1`, text: 'shopping' }
-	]);
+	const [taskList, setTaskList] = useState<task[]>([]);
 
 	return (
 		<div className="taskCard">
-			<TaskCardTitle />
-			<TaskCardDeleteButton />
+			<div className='taskCardTitleAndTaskCardDeleteButtonArea'>
+				<TaskCardTitle />
+				<TaskCardDeleteButton
+					taskCard={taskCard}
+					taskCardsList={taskCardsList}
+					setTaskCardsList={setTaskCardsList}
+				/>
+			</div>
+
 			<TaskAddInput
 				inputText={inputText}
 				setInputText={setInputText}
