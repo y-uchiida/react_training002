@@ -26,7 +26,11 @@ export const TaskAddInput = ({
     /* 入力された内容でTaskCardを追加する */
     setTaskList([
       ...taskList,
-      { id: taskList.length, text: inputText }
+      {
+        id: taskList.length,
+        draggableId: `task-${taskList.length}`,
+        text: inputText
+      }
     ]);
     /* TaskCardとして追加したので、入力内容を空にする */
     setInputText('');

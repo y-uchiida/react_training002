@@ -11,7 +11,10 @@ export const TaskCard = () => {
 	const [inputText, setInputText] = useState('');
 
 	/* TaskCardが保持しているtaskの一覧 */
-	const [taskList, setTaskList] = useState<task[]>([{ id: 0, text: 'Running 30min' }, { id: 1, text: 'shopping' }]);
+	const [taskList, setTaskList] = useState<task[]>([
+		{ id: 0, draggableId: `task-0`, text: 'Running 30min' },
+		{ id: 1, draggableId: `task-1`, text: 'shopping' }
+	]);
 
 	return (
 		<div className="taskCard">
