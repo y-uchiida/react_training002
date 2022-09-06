@@ -1,0 +1,3 @@
+type task = {
+	text: string
+};
